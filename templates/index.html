@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Employee Commute App Analysis</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <style>
-
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Employee Commute App Analysis</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 
 <body class="bg-white">
@@ -28,14 +25,14 @@
 
 <!-- Sidebar -->
 <div id="hs-sidebar-content-push-to-mini-sidebar" 
-     class="fixed lg:relative z-[1100] h-full w-64 bg-white border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
-
+    class="fixed lg:relative z-[1100] h-full w-64 bg-white border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+  
   <div class="relative flex flex-col h-full max-h-full">
-      <header class="py-4 px-12 flex justify-between items-center gap-x-4">
+     <header class="py-4 px-12 flex justify-between items-center gap-x-4">
         <a class="flex-none font-semibold text-xl text-gray-900" href="#">HAWORTH</a>
       </header>
-
-      <nav class="h-full overflow-y-auto">
+	  
+<nav class="h-full overflow-y-auto">
         <div class="pb-0 px-2 w-full flex flex-col flex-wrap">
           <ul class="space-y-1">
             <li>
@@ -80,32 +77,31 @@
 
 <button id="menuToggle" class="lg:hidden fixed top-4 right-4 z-[1100] bg-blue-600 text-white p-2 rounded-md shadow">=</button>
 
+
 <!-- Main Content -->
-<!-- <div class="ml-52 p-6">
+<div class="flex-1 flex flex-col p-4 sm:p-6 min-h-0 overflow-hidden">
 
 <!-- Tabs -->
-<div class="flex-1 flex flex-col p-4 sm:p-6 min-h-0 overflow-hidden">
-  <!-- Tabs -->
-  <div id="homeTab" class="tab-content flex flex-col flex-1 min-h-0">
-    <div class="flex flex-col xl:flex-row xl:items-end gap-4 xl:gap-6 w-full flex-shrink-0">
-      <!-- File Upload -->
-      <div class="w-full lg:flex-1">
-        <label for="fileUpload" class="block text-sm font-medium text-gray-700 mb-2">
-          Upload Excel File (Name, Latitude, Longitude)
-        </label>
-        <div class="relative flex items-center justify-center w-full h-16 border-2 border-dashed border-blue-400 rounded-lg bg-blue-50 hover:bg-blue-100 transition duration-200 cursor-pointer">
-          <input type="file" id="fileUpload" accept=".xlsx,.xls"
-                 class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
-          <span id="filePlaceholder" class="text-blue-600 font-semibold">Click or Drag & Drop Excel File</span>
-        </div>
+<div id="homeTab" class="tab-content flex flex-col flex-1 min-h-0">
+  <div class="flex flex-col xl:flex-row xl:items-end gap-4 xl:gap-6 w-full flex-shrink-0">
+    <!-- File Upload -->
+    <div class="w-full lg:flex-1">
+      <label class="block text-sm font-medium text-gray-700 mb-2"
+	  >Upload Excel File (Name, Latitude, Longitude)
+	  </label>	  
+	  <div class="relative flex items-center justify-center w-full h-16 border-2 border-dashed border-blue-400 rounded-lg bg-blue-50 cursor-pointer hover:bg-blue-100">
+        <input type="file" id="fileUpload" accept=".xlsx,.xls" 
+		class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"/>
+        <span id="filePlaceholder" class="text-blue-600 font-semibold">Click or Drag & Drop Excel File</span>
       </div>
+    </div>
 
-      <!-- WFO Days -->
-      <div class ="w-full lg:w-auto">
-        <label for="wfoDays" class="block text-sm font-medium text-gray-700 mb-2">WFO Days</label>
-        <input type="number" id="wfoDays" min="0" max="5" value="3"
-               class="w-full xl:w-24 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-      </div>
+    <!-- WFO Days -->
+    <div  class ="w-full lg:w-auto">
+      <label for="wfoDays" class="block text-sm font-medium text-gray-700 mb-2">WFO Days</label>
+      <input type="number" id="wfoDays" min="1" max="7" value="3" 
+	 class="w-full xl:w-24 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+    </div>
 
       <!-- Buttons -->
       <div class="flex flex-col justify-center xl:justify-start mt-2 xl:mt-0">
@@ -127,9 +123,8 @@
     </svg>
 	Reset
 		
-          </button>
-		  
-        </div>
+  </button>
+  </div>
       </div>
     </div>
 
@@ -137,12 +132,10 @@
     <div class="border-t border-gray-300 mt-6"></div>
 	
 	 
-	 
  <!-- Map fills remaining space -->
   <div id="map" class="flex-1 w-full mt-6 rounded-lg shadow-md border border-gray-200 relative-z-0"></div>
 	 
   </div>
-
 
   <!-- Other tabs -->
   <div id="scenariosTab" class="tab-content hidden">
@@ -158,29 +151,23 @@
 </div>
 </div>
 
-
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 <script>
-  let employeeData = [];
-  const map = L.map('map').setView([13.0827, 80.2707], 12);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
-  
-  let officeLocation = null; // stores [lat, lng] once user clicks on map
+let employeeData = [];
+let officeLocation = null;
 let officeMarker = null;
+const map = L.map('map').setView([13.0827, 80.2707], 12);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
 
-  // Sidebar tab switching
+// Sidebar switching
 document.querySelectorAll(".sidebar-link").forEach(link=>{
   link.addEventListener("click", e=>{
     e.preventDefault();
-
     document.querySelectorAll(".tab-content").forEach(tab=>tab.classList.add("hidden"));
     document.getElementById(link.dataset.type).classList.remove("hidden");
-
     document.querySelectorAll(".sidebar-link").forEach(l=>l.classList.remove("bg-gray-200","text-gray-900"));
     link.classList.add("bg-gray-200","text-gray-900");
-
-    if(link.dataset.type === "homeTab"){
-      setTimeout(()=> map.invalidateSize(), 150);
-    }
+    if(link.dataset.type === "homeTab") setTimeout(()=> map.invalidateSize(), 150);
   });
 });
 
@@ -212,194 +199,121 @@ function showNotification(message){
   }, 3000);
 }
 
-  // File upload
-  
+// Map click to set office
+map.on('click', function(e) {
+  const { lat, lng } = e.latlng;
+  officeLocation = [lat, lng];
+  if(officeMarker) map.removeLayer(officeMarker);
+  officeMarker = L.marker([lat, lng], { draggable: true }).addTo(map).bindPopup('Office Location').openPopup();
+});
 
- document.getElementById("fileUpload").addEventListener("change", async (e)=>{
+// File upload
+document.getElementById("fileUpload").addEventListener("change", async (e)=>{
   const file = e.target.files[0];
   const placeholder = document.getElementById("filePlaceholder");
-
-  // Update placeholder
-  if(file){
-    placeholder.textContent = file.name;
-  } else {
-    placeholder.textContent = "Click or Drag & Drop Excel File";
-    employeeData = [];
-    return;
-  }
+  if(file) placeholder.textContent = file.name; else placeholder.textContent = "Click or Drag & Drop Excel File";
 
   const formData = new FormData();
   formData.append("file", file);
 
   try {
-    const response = await fetch("/upload",{method:"POST", body: formData});
-
-    if(!response.ok){
-      // Upload failed, show notification
-      const error = await response.json();
-      showNotification(error.error || "Upload failed!");
-      employeeData = [];
-      return;
-    }
-
-    const data = await response.json();
-
-    // Validate that required columns exist
-    if(!data.every(emp => "employee_id" in emp && "latitude" in emp && "longitude" in emp)){
-      showNotification("Excel missing required columns!");
-      employeeData = [];
-      return;
-    }
-
-    // ✅ File is valid, update employeeData
+    const res = await fetch("/upload",{method:"POST", body: formData});
+    const data = await res.json();
     employeeData = data;
-
-    // Render map and table immediately
     renderMap(employeeData);
     renderTable(employeeData);
     renderPieChart(employeeData);
-
-    // Optional: show a small success notification
-    showNotification("File uploaded and mapped successfully!");
-
-  } catch(err) {
-    console.error(err);
-    showNotification("Upload failed!");
-    employeeData = [];
-  }
+  } catch(err){ console.error(err); }
 });
 
-
-
-//set office Location
-
-map.on('click', function(e) {
-  const { lat, lng } = e.latlng;
-  officeLocation = [lat, lng];
-
-  // Remove previous marker if exists
-  if (officeMarker) map.removeLayer(officeMarker);
-
-  // Add a marker for the office
-  officeMarker = L.marker([lat, lng], { 
-    draggable: true // optional: user can move office marker
-  }).addTo(map)
-    .bindPopup('Selected Office Location')
-    .openPopup();
-});
-
-
-
-  // Run scenario
+// Run scenario
 document.getElementById("runScenario").addEventListener("click", async () => {
-  if (!officeLocation) {
-    showNotification("Please select the office location on the map first!");
-    return;
-  }
+  if(!officeLocation){ alert("Select office on map"); return; }
+  if(employeeData.length===0){ alert("Upload file first"); return; }
 
-  if (employeeData.length === 0) {
-    showNotification("Upload file first!");
-    return;
-  }
 
-  const wfo = parseInt(document.getElementById("wfoDays").value);
-
+const wfo = parseInt(document.getElementById("wfoDays").value);
   const response = await fetch("/run_scenario", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      employees: employeeData,
-      wfo_days: wfo,
-      low: 30,
-      medium: 45,
-      office: { latitude: officeLocation[0], longitude: officeLocation[1] } // send office location to backend
-    })
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ employees: employeeData, wfo_days:wfo, office:{latitude:officeLocation[0], longitude:officeLocation[1]} })
   });
-
   const result = await response.json();
   employeeData = result.employees;
-
   renderMap(employeeData);
   renderTable(employeeData);
   renderPieChart(employeeData);
   renderInsights(result);
-  showNotification("Scenario run successfully!");
-});derInsights(result);
-  sho
-
-  // Reset
-  document.getElementById("resetAll").addEventListener("click", () => {
-  // Clear data
-  employeeData = [];
-
-  // Clear file input
-  const fileInput = document.getElementById("fileUpload");
-  const filePlaceholder = document.getElementById("filePlaceholder");
-  fileInput.value = "";
-  filePlaceholder.textContent = "Click or Drag & Drop Excel File";
-
-  // Clear table and pie chart
-  renderTable([]);
-  renderPieChart([]);
-  document.getElementById("finalInsights").innerHTML = "";
-
-  // Clear map
-  map.eachLayer(layer => {
-    if (layer instanceof L.CircleMarker) map.removeLayer(layer);
-  });
-
-  // Clear office marker
-  if (officeMarker) {
-    map.removeLayer(officeMarker);
-    officeMarker = null;
-    officeLocation = null;
-  }
-
-  // Reset map view
-  map.setView([13.0827, 80.2707], 12);
 });
 
-  // Table rendering
-  function renderTable(data){
-    const container = document.getElementById("scenarioTables");
-    container.innerHTML="";
-    if(data.length===0) return;
-    const table=document.createElement("table");
-    table.className="min-w-full bg-white border";
-    table.innerHTML=`<thead><tr>${Object.keys(data[0]).map(k=>`<th class="px-4 py-2 border">${k}</th>`).join('')}</tr></thead>
+
+// Render functions
+function renderTable(data){
+  const container = document.getElementById("scenarioTables");
+  container.innerHTML="";
+  if(!data.length) return;
+  const table=document.createElement("table");
+  table.className="min-w-full bg-white border";
+  table.innerHTML=`<thead><tr>${Object.keys(data[0]).map(k=>`<th class="px-4 py-2 border">${k}</th>`).join('')}</tr></thead>
     <tbody>${data.map(r=>`<tr>${Object.values(r).map(v=>`<td class="px-4 py-2 border">${v}</td>`).join('')}</tr>`).join('')}</tbody>`;
-    container.appendChild(table);
-  }
+  container.appendChild(table);
+}
 
-  // Pie chart
-  function renderPieChart(data){
-    const low=data.filter(e=>e.travel_time_min<30).length;
-    const moderate=data.filter(e=>e.travel_time_min>=30 && e.travel_time_min<=45).length;
-    const high=data.filter(e=>e.travel_time_min>45).length;
-    const ctx=document.getElementById("pieChart").getContext("2d");
-    if(window.pieChart) window.pieChart.destroy();
-    window.pieChart=new Chart(ctx,{
-      type:'pie',
-      data:{labels:['Low','Moderate','High'], datasets:[{data:[low,moderate,high], backgroundColor:['green','orange','red']}]}
-    });
-  }
+function renderPieChart(data){
+  const low=data.filter(e=>e.travel_time_min<30).length;
+  const moderate=data.filter(e=>e.travel_time_min>=30 && e.travel_time_min<=45).length;
+  const high=data.filter(e=>e.travel_time_min>45).length;
+  const ctx=document.getElementById("pieChart").getContext("2d");
+  if(window.pieChart) window.pieChart.destroy();
+  window.pieChart=new Chart(ctx,{
+    type:'pie',
+    data:{labels:['Low','Moderate','High'], datasets:[{data:[low,moderate,high], backgroundColor:['green','orange','red']}]}
+  });
+}
 
-  // Map rendering
-  function renderMap(data){
-    map.eachLayer(layer=>{if(layer instanceof L.CircleMarker) map.removeLayer(layer);});
-    data.forEach(emp=>{
-      const color = emp.travel_time_min<30 ? "green" : emp.travel_time_min<=45 ? "orange" : "red";
-      L.circleMarker([emp.latitude, emp.longitude], {radius:6, color, fill:true}).addTo(map);
-    });
-  }
 
-  // Insights rendering
-  function renderInsights(result){
-    const container=document.getElementById("finalInsights");
-    container.innerHTML=`<p>Office Fit Score: <strong>${result.office_fit_pct}%</strong></p>
-                       <p>Fit Assessment: <strong>${result.office_fit_label}</strong></p>`;
-  }
+function renderMap(data){
+  map.eachLayer(layer=>{if(layer instanceof L.CircleMarker) map.removeLayer(layer);});
+  data.forEach(emp=>{
+    const color = emp.travel_time_min<30 ? "green" : emp.travel_time_min<=45 ? "orange" : "red";
+    L.circleMarker([emp.latitude, emp.longitude], {radius:6, color, fill:true}).addTo(map);
+  });
+}
+
+function renderInsights(result){
+    const container = document.getElementById("finalInsights");
+    let html = `<h3 class="text-xl font-semibold mt-2">Office Metrics</h3>
+    <p>Fit Score: <strong>${result.office_fit_pct}%</strong> (${result.office_fit_label})</p>
+    <p>Average Commute: <strong>${result.avg_commute_time} min</strong></p>
+    <h3 class="text-xl font-semibold mt-2">Commute Burden Concentration</h3>
+    <ul>
+    <li>Low: ${result.commute_distribution.low}%</li>
+    <li>Moderate: ${result.commute_distribution.medium}%</li>
+    <li>High: ${result.commute_distribution.high}%</li>
+    </ul>
+    <h3 class="text-xl font-semibold mt-2">Cluster Opportunities</h3>
+    <ul>
+    ${result.cluster_summary.map(c=>`<li>Cluster ${c.cluster}: ${c.members} employees, avg commute ${c.avg_commute} min</li>`).join('')}
+    </ul>
+    <h3 class="text-xl font-semibold mt-2">WFO Impact</h3>
+    <p>Avg commute/week: <strong>${result.avg_commute_per_week} hrs</strong></p>
+    <p>CO₂ impact/week: <strong>${result.co2_per_week} kg</strong></p>
+    <p>Marginal per WFO day: <strong>${result.marginal_commute_per_day} hrs</strong>, <strong>${result.marginal_co2_per_day} kg</strong></p>
+    `;
+    container.innerHTML = html;
+}
+
+
+// Reset
+document.getElementById("resetAll").addEventListener("click", ()=>{
+  employeeData=[]; officeLocation=null;
+  if(officeMarker) map.removeLayer(officeMarker); officeMarker=null;
+  map.setView([13.0827,80.2707],12);
+  document.getElementById("scenarioTables").innerHTML="";
+  if(window.pieChart) window.pieChart.destroy();
+  document.getElementById("finalInsights").innerHTML="";
+  document.getElementById("filePlaceholder").textContent="Click or Drag & Drop Excel File";
+});
 </script>
-
 </body>
 </html>
